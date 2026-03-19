@@ -1,0 +1,132 @@
+.battle-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 32px 0;
+  animation: fadeIn 0.3s ease both;
+}
+
+/* Countdown */
+.countdown-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.countdown-number {
+  font-size: clamp(4rem, 20vw, 7rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #7C3AED, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: countdownPop 0.5s ease both;
+  line-height: 1;
+}
+
+.countdown-chars {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 4rem;
+}
+
+.countdown-char {
+  display: inline-block;
+}
+
+.countdown-char--left {
+  animation: float 1.5s ease-in-out infinite;
+}
+
+.countdown-char--right {
+  animation: float 1.5s ease-in-out infinite;
+  animation-delay: -0.75s;
+}
+
+.countdown-sword {
+  animation: wiggle 0.8s ease-in-out infinite;
+}
+
+/* Reveal */
+.reveal-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  animation: fadeIn 0.4s ease both;
+}
+
+.reveal-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.reveal-choices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.reveal-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 24px 16px;
+  flex: 1;
+  box-shadow: var(--shadow-fun);
+}
+
+.slide-left {
+  animation: slideInLeft 0.5s ease both;
+}
+
+.slide-right {
+  animation: slideInRight 0.5s ease both;
+}
+
+.reveal-char-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: var(--color-primary);
+  color: white;
+  padding: 2px 10px;
+  border-radius: var(--radius-round);
+}
+
+.reveal-char-tag--cpu {
+  background: #00BCD4;
+}
+
+.reveal-emoji {
+  font-size: 3.5rem;
+  display: block;
+  animation: bounceWin 0.8s ease 0.3s both;
+}
+
+.reveal-label {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.reveal-vs {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  background: #EDE9FE;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  flex-shrink: 0;
+}

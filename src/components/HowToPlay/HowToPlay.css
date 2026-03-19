@@ -1,0 +1,131 @@
+.how-to-play {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px 0 32px;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.htp-title {
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  background: linear-gradient(135deg, #7C3AED, #EC4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.htp-sub {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-soft);
+}
+
+.htp-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.htp-rule-card {
+  border-radius: var(--radius-xl);
+  border: 2px solid;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.htp-rule-card:nth-child(2) { animation-delay: 0.08s; }
+.htp-rule-card:nth-child(3) { animation-delay: 0.16s; }
+
+.htp-combatants {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.htp-combatant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.htp-emoji {
+  font-size: 2.6rem;
+  display: block;
+}
+
+.htp-winner {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.htp-loser {
+  opacity: 0.6;
+}
+
+.htp-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-soft);
+}
+
+.htp-vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-text-soft);
+  gap: 2px;
+}
+
+.htp-arrow {
+  font-size: 1.4rem;
+}
+
+.htp-explanation {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.htp-draw-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 14px 18px;
+  box-shadow: var(--shadow-card);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.htp-draw-note span {
+  font-size: 2rem;
+}
+
+.btn-htp {
+  width: 100%;
+  background: linear-gradient(135deg, #7C3AED, #EC4899);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 16px;
+  border-radius: var(--radius-round);
+  box-shadow: var(--shadow-fun);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-htp:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}

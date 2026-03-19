@@ -1,0 +1,79 @@
+.welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 16px;
+  padding: 32px 0;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.welcome-emojis {
+  display: flex;
+  gap: 20px;
+  font-size: 3rem;
+}
+
+.welcome-emoji {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.welcome-title-wrap {
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: clamp(2.4rem, 10vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #7C3AED, #EC4899, #F59E0B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleBounce 0.7s ease both;
+}
+
+.welcome-title:nth-child(2) { animation-delay: 0.1s; }
+.welcome-title:nth-child(3) { animation-delay: 0.2s; }
+
+.welcome-subtitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-soft);
+  text-align: center;
+}
+
+.welcome-mascot {
+  font-size: 5rem;
+  animation: floatBig 3s ease-in-out infinite;
+}
+
+.btn-start {
+  background: linear-gradient(135deg, #7C3AED, #EC4899);
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 800;
+  padding: 18px 48px;
+  border-radius: var(--radius-round);
+  box-shadow: var(--shadow-fun);
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: pulse 2s ease-in-out infinite;
+  letter-spacing: 0.5px;
+}
+
+.btn-start:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-start:active {
+  transform: scale(0.95);
+}
+
+.welcome-hint {
+  font-size: 0.95rem;
+  color: var(--color-text-soft);
+  font-weight: 600;
+}

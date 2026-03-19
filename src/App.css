@@ -1,0 +1,56 @@
+.app-wrapper {
+  position: relative;
+  min-height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #FFF9E6 0%, #EDE9FE 50%, #FCE7F3 100%);
+}
+
+.bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 8s ease-in-out infinite;
+}
+
+.blob-1 {
+  width: 320px;
+  height: 320px;
+  background: #A78BFA;
+  top: -80px;
+  left: -80px;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  width: 260px;
+  height: 260px;
+  background: #FCA5A5;
+  bottom: 60px;
+  right: -60px;
+  animation-delay: -3s;
+}
+
+.blob-3 {
+  width: 200px;
+  height: 200px;
+  background: #6EE7B7;
+  bottom: -50px;
+  left: 40%;
+  animation-delay: -5s;
+}
+
+.app-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 16px 16px 32px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
