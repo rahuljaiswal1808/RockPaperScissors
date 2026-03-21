@@ -1,0 +1,173 @@
+.gesture-camera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ── Camera viewport ── */
+.camera-container {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: #0f0f1e;
+  box-shadow: var(--shadow-card);
+}
+
+.camera-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scaleX(-1); /* mirror so it feels like a mirror */
+}
+
+.camera-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* canvas drawing is already mirrored inside drawSkeleton() */
+}
+
+/* ── Loading overlay ── */
+.camera-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 15, 30, 0.88);
+  color: white;
+  gap: 14px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px;
+}
+
+.camera-spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #4af;
+  border-radius: 50%;
+  animation: spinCamera 0.75s linear infinite;
+}
+
+@keyframes spinCamera {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Gesture overlay (shown when ready) ── */
+.gesture-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 10px 12px;
+  pointer-events: none;
+}
+
+/* Detected gesture badge (bottom-left) */
+.detected-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(4px);
+  border-radius: var(--radius-round);
+  padding: 6px 14px;
+  animation: fadeInUp 0.2s ease;
+}
+
+.detected-emoji { font-size: 1.4rem; }
+
+.detected-name {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+/* Circular hold-progress (bottom-right) */
+.hold-ring {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+}
+
+.hold-ring svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hold-ring-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+/* "Show your hand" hint */
+.show-hand-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: var(--radius-round);
+  white-space: nowrap;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ── Gesture guide ── */
+.gesture-guide {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-soft);
+}
+
+.gesture-tip {
+  font-size: 0.82rem;
+  color: var(--color-text-soft);
+  text-align: center;
+  margin: 0;
+}
+
+/* ── Error state ── */
+.gesture-error {
+  background: #fef2f2;
+  border: 2px solid #fca5a5;
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  text-align: center;
+  color: #991b1b;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.gesture-error p {
+  margin: 0;
+  font-weight: 700;
+}

@@ -1,4 +1,5 @@
-import { CHOICES } from '../../data/gameRules.js'
+import GestureCamera from '../GestureCamera/GestureCamera.jsx'
+import { MAX_TURNS } from '../../hooks/useGame.js'
 import './GameBoard.css'
 
 export default function GameBoard({ playerChar, scores, round, onChoice, onChangeChar }) {
@@ -13,9 +14,7 @@ export default function GameBoard({ playerChar, scores, round, onChoice, onChang
           <span className="score-sep">·</span>
           <span className="score-l">💔 {scores.losses}</span>
         </div>
-        {round > 0 && (
-          <span className="gb-round">Round {round + 1}</span>
-        )}
+        <span className="gb-round">Turn {round + 1} / {MAX_TURNS}</span>
       </div>
 
       {/* Versus area */}
@@ -42,25 +41,13 @@ export default function GameBoard({ playerChar, scores, round, onChoice, onChang
         </div>
       </div>
 
-      {/* Choice prompt */}
+      {/* Prompt */}
       <div className="gb-prompt">
-        <p>What do you choose?</p>
+        <p>Show your gesture!</p>
       </div>
 
-      {/* Choice buttons */}
-      <div className="gb-choices">
-        {CHOICES.map((choice) => (
-          <button
-            key={choice.id}
-            className="choice-btn"
-            style={{ '--choice-color': choice.color }}
-            onClick={() => onChoice(choice.id)}
-          >
-            <span className="choice-emoji">{choice.emoji}</span>
-            <span className="choice-label">{choice.label}</span>
-          </button>
-        ))}
-      </div>
+      {/* Gesture Camera */}
+      <GestureCamera onChoice={onChoice} />
 
       {/* Change character */}
       <button className="btn-change-char" onClick={onChangeChar}>

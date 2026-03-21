@@ -1,6 +1,8 @@
 import { useState, useCallback } from 'react'
 import { getResult, getRandomChoice } from '../data/gameRules.js'
 
+export const MAX_TURNS = 20
+
 export const SCREENS = {
   WELCOME: 'welcome',
   CHARACTER_SELECT: 'characterSelect',
@@ -82,8 +84,12 @@ export function useGame() {
     setPlayerChoice(null)
     setCpuChoice(null)
     setResult(null)
-    setScreen(SCREENS.GAME_BOARD)
-  }, [])
+    if (round >= MAX_TURNS) {
+      setScreen(SCREENS.SCORE_BOARD)
+    } else {
+      setScreen(SCREENS.GAME_BOARD)
+    }
+  }, [round])
 
   const changeCharacter = useCallback(() => {
     setPlayerChoice(null)
