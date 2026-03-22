@@ -2,26 +2,25 @@ import { useEffect, useRef, useState } from 'react'
 
 const HOLD_DURATION = 1500 // ms the user must hold the gesture
 
-function dist(a, b) {
-  return Math.hypot(a.x - b.x, a.y - b.y)
-}
-
-// A finger is "extended" when its tip is farther from the wrist than its MCP knuckle
-function isFingerExtended(kp, tipIdx, mcpIdx) {
-  return dist(kp[tipIdx], kp[0]) > dist(kp[mcpIdx], kp[0]) * 1.2
+// A finger is "extended" when its tip is above its PIP (middle) joint in image coords.
+// Image y increases downward, so tip.y < pip.y means the tip is higher = finger open.
+function isFingerExtended(kp, tipIdx, pipIdx) {
+  return kp[tipIdx].y < kp[pipIdx].y
 }
 
 function classifyGesture(keypoints) {
-  const indexUp  = isFingerExtended(keypoints, 8,  5)
-  const middleUp = isFingerExtended(keypoints, 12, 9)
-  const ringUp   = isFingerExtended(keypoints, 16, 13)
-  const pinkyUp  = isFingerExtended(keypoints, 20, 17)
+  if (!keypoints || keypoints.length < 21) return null
+  // PIP joints: index=6, middle=10, ring=14, pinky=18
+  const indexUp  = isFingerExtended(keypoints, 8,  6)
+  const middleUp = isFingerExtended(keypoints, 12, 10)
+  const ringUp   = isFingerExtended(keypoints, 16, 14)
+  const pinkyUp  = isFingerExtended(keypoints, 20, 18)
   const count = [indexUp, middleUp, ringUp, pinkyUp].filter(Boolean).length
 
   if (count === 0) return 'rock'
   if (count >= 3)  return 'paper'
   if (indexUp && middleUp && !ringUp && !pinkyUp) return 'scissors'
-  return null // ambiguous
+  return null // ambiguous / transitioning
 }
 
 // Module-level cache so the model only loads once across remounts
